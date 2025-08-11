@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { footerInfoPost } from "../service/api";
+import { fetchUser } from "../store";
+import { useThunk } from "../hooks/use-thunk";
+// import { footerInfoPost } from "../service/api";
 
 export default function Footer() {
+  const [doFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUser);
+
   const [footerInfo, setFooterInfo] = useState([]);
+
   useEffect(() => {
-    footerInfoPost().then((data) => {
-      if (data && data !== 2) {
-        setFooterInfo(data[0]);
-      }
-    });
-  }, []);
+    doFetchUsers();
+    // footerInfoPost().then((data) => {
+    //   if (data && data !== 2) {
+    //     setFooterInfo(data[0]);
+    //   }
+    // });
+  }, [doFetchUsers]);
   return (
     <footer className="site-footer">
       <div className="container">
