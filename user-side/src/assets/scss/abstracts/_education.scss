@@ -1,0 +1,104 @@
+@use "./colors";
+.education {
+  .education-horizontal-timeline {
+    padding: 80px 15px;
+
+    .col-md-4 {
+      padding: 0 !important;
+    }
+    .single-horizontal-timeline {
+      display: flex;
+      flex-direction: column;
+
+      .experience-time {
+        order: 1;
+        h2 {
+          margin: 0;
+          color: #43485c;
+          font-size: 16px;
+          font-family: "Poppins", sans-serif;
+          text-transform: capitalize;
+          font-weight: 400;
+          letter-spacing: 0;
+        }
+        h3 {
+          font-size: 16px;
+          font-weight: 300;
+          color: #636a82;
+          margin-top: 14px;
+          // text-transform: uppercase;
+        }
+
+        p {
+          color: colors.$p-color;
+          max-width: 335px;
+        }
+      }
+      .timeline-horizontal-border {
+        order: 2;
+        @media only screen and (max-width: 767px) {
+          order: 4;
+        }
+        i {
+          color: colors.$secondary-color;
+          position: absolute;
+          left: -6px;
+          top: 19px;
+          z-index: 1;
+        }
+        .icon {
+          &::before {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+      .timeline {
+        order: 3;
+        .timeline-content {
+          h4.title {
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: uppercase;
+          }
+          h5 {
+            color: #636a82;
+            font-size: 14px;
+            font-weight: 300;
+            margin: 18px 0 20px;
+          }
+          .description {
+            font-size: 14px;
+            color: #999fb3;
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*.timeline-horizontal-border*/
+.timeline-horizontal-border {
+  display: flex;
+  align-items: center;
+  padding: 26px 0 30px;
+}
+.timeline-horizontal-border .circle {
+  margin-right: 3px;
+  &::before {
+    background-color: colors.$secondary-color;
+    width: 15px;
+    height: 15px;
+  }
+}
+span.single-timeline-horizontal {
+  display: inline-block;
+  background: #b2c1ce;
+  height: 1px;
+  width: 100%;
+}
+span.single-timeline-horizontal.spacial-horizontal-line {
+  width: 88px;
+}
+/*.timeline-horizontal-border*/

@@ -1,0 +1,70 @@
+@use "./variables.scss";
+
+$icons: (
+  call,
+  search,
+  React,
+  Gitlab,
+  Github,
+  JavaScript,
+  Express,
+  CSS3,
+  tailwind,
+  Bootstrap,
+  SASS,
+  MYSQL,
+  PHP,
+  VueJS,
+  MongoDB,
+  HTML,
+  Git,
+  TYPO3,
+  circle,
+  colored_circle,
+  Xing,
+  LinkedIn,
+  file-download,
+  list,
+  x,
+  at,
+  map-pin,
+  globe
+);
+
+@each $icon in $icons {
+  .icon-#{$icon}:before,
+  .icon-#{$icon}:after {
+    mask-image: url("#{variables.$icon-path}/#{$icon}.svg");
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.left:before,
+  &.right:after,
+  &.no-text:before {
+    content: "";
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: currentcolor;
+  }
+
+  &.left:before {
+    margin-right: 8px;
+  }
+
+  &.right:after {
+    margin-left: 8px;
+  }
+
+  &.no-text:before {
+    margin: 0;
+  }
+}

@@ -1,0 +1,13 @@
+@use "./colors";
+@mixin link-list-decoration-left {
+  &::after {
+    content: " ";
+    width: 18%;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+    background-color: colors.$secondary-color;
+  }
+}

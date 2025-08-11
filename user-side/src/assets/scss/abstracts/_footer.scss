@@ -1,0 +1,41 @@
+@use "./colors.scss";
+.footer-container {
+  .site-footer {
+    ul {
+      list-style: none;
+    }
+    .contact-footer-info {
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .social-media {
+      ul.social-media-list {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .icon {
+        &::before {
+          height: 40px;
+          width: 40px;
+          border-radius: 5px;
+        }
+        &::after {
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+    .Date-protection {
+      border-top: 1px solid colors.$border-color;
+      padding-top: 30px;
+    }
+  }
+}

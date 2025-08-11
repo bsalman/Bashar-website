@@ -1,0 +1,47 @@
+@use "./colors.scss";
+@use "./sizes.scss";
+.projects-thumb {
+  background: colors.$section-bg-color;
+  border: 2px solid colors.$white-color;
+  border-radius: sizes.$border-radius-medium;
+  position: relative;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 40px;
+  transition: all ease 0.5s;
+  &:hover {
+    border-color: colors.$secondary-color;
+    .projects-image {
+      transform: rotate(0) translateY(0);
+    }
+  }
+  &:focus {
+    .projects-image {
+      transform: rotate(0) translateY(0);
+    }
+  }
+  .popup-image {
+    display: block;
+    width: 100%;
+    max-height: 189px;
+  }
+  .projects-image {
+    border-radius: sizes.$border-radius-medium;
+    display: block;
+    width: 100%;
+    transform: rotate(10deg) translateY(80px);
+    transition: all ease 0.5s;
+    max-height: 289px;
+  }
+  .projects-title {
+    margin-bottom: 20px;
+  }
+  .projects-tag {
+    font-size: sizes.$menu-font-size;
+    font-weight: sizes.$font-weight-medium;
+    color: colors.$secondary-color;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+}

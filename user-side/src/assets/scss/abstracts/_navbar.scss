@@ -1,0 +1,179 @@
+@use "./colors.scss";
+@use "./mixin.scss";
+.navbar {
+  .navbar-collapse {
+    position: relative;
+  }
+  .navBar_small {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    button {
+      position: absolute;
+      top: -49px;
+      right: 15px;
+      z-index: 1;
+    }
+    .btn-toggler {
+      border: colors.$p-color 1px solid;
+      background-color: colors.$white-color;
+      color: colors.$p-color;
+      &:hover,
+      &:focus {
+        border: colors.$secondary-color 1px solid;
+        color: colors.$secondary-color;
+      }
+      .icon {
+        width: 1.5em;
+        height: 1.5em;
+        vertical-align: middle;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+      }
+    }
+    .collapse-element {
+      .list-container {
+        border: none;
+        width: 100%;
+        .g-item {
+          border: none;
+          text-align: end;
+
+          a {
+            text-decoration: none;
+            color: colors.$p-color;
+            &:hover {
+              color: colors.$secondary-color;
+              @include mixin.link-list-decoration-left;
+            }
+            &.active {
+              color: colors.$secondary-color;
+              @include mixin.link-list-decoration-left;
+            }
+          }
+        }
+        .collapse-element {
+          padding-top: 60px;
+        }
+      }
+    }
+    @media only screen and (max-width: 991px) {
+      display: block;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: colors.$white-color;
+      &:hover {
+        color: colors.$secondary-color;
+      }
+    }
+    span.navbar-icon {
+      display: flex;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .language-switcher {
+      align-self: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: colors.$white-color;
+      .list-container {
+        cursor: pointer;
+        border: none;
+        width: 100%;
+
+        .list-group-lang {
+          .g-item {
+            border: none;
+            text-align: end;
+
+            span.language-btn {
+              color: colors.$p-color;
+            }
+          }
+
+          &:hover {
+            .list-group-lang .g-item span.language-btn {
+              color: colors.$secondary-color !important;
+            }
+          }
+        }
+      }
+      .icon {
+        cursor: pointer;
+        &:before {
+          background-color: colors.$white-color;
+        }
+      }
+      &:hover {
+        .icon {
+          &:before {
+            background-color: colors.$secondary-color;
+          }
+        }
+      }
+      .lang-list {
+        position: absolute;
+        right: 31px;
+        top: 4px;
+      }
+    }
+  }
+
+  .sticky {
+    background-color: colors.$section-bg-color !important;
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    background: var(--white-color);
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+    z-index: 999 !important;
+
+    .nav-link {
+      color: colors.$primary-color;
+    }
+    .navbar-icon {
+      background-color: colors.$secondary-color;
+      color: colors.$white-color;
+    }
+    .custom-btn {
+      background-color: colors.$secondary-color;
+      color: colors.$white-color;
+    }
+    .language-switcher {
+      color: colors.$p-color !important ;
+      .icon {
+        &:before {
+          background-color: colors.$p-color !important;
+        }
+      }
+      &:hover {
+        .icon {
+          &:before {
+            background-color: colors.$secondary-color !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 987px) {
+//   .navBar {
+//     display: none;
+//   }
+//   .navBar_small {
+//     display: block;
+//   }
+// }

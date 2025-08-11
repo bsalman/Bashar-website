@@ -1,0 +1,52 @@
+@use "./abstracts/navbar.scss";
+@use "./templates/template.scss";
+@use "./abstracts/icons.scss";
+@use "./abstracts/education.scss";
+@use "./abstracts/footer.scss";
+@use "./abstracts/projects.scss";
+@use "./abstracts/experience.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+
+  // .main_container {
+  //   width: 100%;
+  //   display: grid;
+  //   grid-template-columns: 200px 1fr; /* Sidebar and main content */
+  //   grid-template-rows: 1fr auto; /* Main content and footer */
+  //   grid-template-areas: "sidebar main" "sidebar footer";
+  //   height: 100vh; /* Full viewport height */
+  //   background-color: #ccc;
+
+  //   .nav-container {
+  //     grid-area: sidebar;
+  //   }
+  //   .routs-container {
+  //     grid-area: main;
+  //   }
+  //   .footer-container {
+  //     grid-area: footer;
+  //     text-align: center;
+  //   }
+  //   @media only screen and (max-width: 987px) {
+  //     grid-template-columns: auto auto; /* Sidebar and main content */
+  //     grid-template-rows: 100px 1fr 100px; /* Main content and footer */
+  //     grid-template-areas: "sidebar sidebar" "main main" " footer footer";
+  //     .nav-container {
+  //       width: 100%;
+  //     }
+  //     .routs-container {
+  //       width: 100%;
+  //     }
+  //     .footer-container {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
+}

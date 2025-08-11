@@ -1,0 +1,4 @@
+@use "./colors";
+.sub-hero {
+  background-color: colors.$secondary-color;
+}
