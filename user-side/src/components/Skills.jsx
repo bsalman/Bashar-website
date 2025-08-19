@@ -44,7 +44,6 @@ class Skills extends React.Component {
 
     return (
       <>
-        <SubHero />
         <section className="services section-padding">
           <div className="container">
             <div className="row">

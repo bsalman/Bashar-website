@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchUser } from "../store";
-import { useThunk } from "../hooks/use-thunk";
-// import { footerInfoPost } from "../service/api";
 
-export default function Footer() {
-  const [doFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUser);
+// import { userInfoPost } from "../service/api";
 
-  const [footerInfo, setFooterInfo] = useState([]);
+export default function Footer({ userInfo, error, isLoading }) {
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    doFetchUsers();
-    // footerInfoPost().then((data) => {
-    //   if (data && data !== 2) {
-    //     setFooterInfo(data[0]);
-    //   }
-    // });
-  }, [doFetchUsers]);
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+  if (error) {
+    return <div>error fetching userInfo </div>;
+  }
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -30,22 +26,22 @@ export default function Footer() {
                     className="footer-icon-link d-flex justify-content-start align-items-center ">
                     <span className="icon icon-map-pin no-text"></span>
                     <small>
-                      Germany &nbsp;{footerInfo.zip}&nbsp;
-                      {footerInfo.city}
+                      Germany &nbsp;{userInfo.zip}&nbsp;
+                      {userInfo.city}
                     </small>
                   </Link>
                 </li>
                 <li>
-                  <Link to={`callto:${footerInfo.phone}`}>
+                  <Link to={`callto:${userInfo.phone}`}>
                     <small className="icon icon-call no-text">
-                      &nbsp;{footerInfo.phone}
+                      &nbsp;{userInfo.phone}
                     </small>
                   </Link>
                 </li>
                 <li>
-                  <Link to={`mailto:${footerInfo.email}`}>
+                  <Link to={`mailto:${userInfo.email}`}>
                     <small className="icon icon-at no-text">
-                      &nbsp;{footerInfo.email}
+                      &nbsp;{userInfo.email}
                     </small>
                   </Link>
                 </li>
@@ -57,22 +53,22 @@ export default function Footer() {
               <div className="social-media .bg-secondary">
                 <ul className="social-media-list">
                   <li>
-                    <Link to={footerInfo.xing_url} target="_blank">
+                    <Link to={userInfo.xing_url} target="_blank">
                       <span className="icon icon-Xing no-text"></span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={footerInfo.github_url} target="_blank">
+                    <Link to={userInfo.github_url} target="_blank">
                       <span className="icon icon-Github no-text"></span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={footerInfo.linkedin_url} target="_blank">
+                    <Link to={userInfo.linkedin_url} target="_blank">
                       <span className="icon icon-LinkedIn no-text"></span>
                     </Link>
                   </li>
                   {/* <li>
-                    <Link to={`../${footerInfo.cv_file_url}`} target="_blank">
+                    <Link to={`../${userInfo.cv_file_url}`} target="_blank">
                       <span className="icon icon-file-download no-text"></span>
                     </Link>
                   </li> */}
@@ -87,10 +83,10 @@ export default function Footer() {
               <ul>
                 <li>
                   <Link
-                    to={footerInfo.data_protection_file_url}
+                    to={userInfo.userInfo_protection_file_url}
                     target="_blank"
                     className="d-flex justify-content-center align-items-center">
-                    <small className="fs-6">Data Protection</small>
+                    <small className="fs-6">UserInfo Protection</small>
                   </Link>
                 </li>
               </ul>

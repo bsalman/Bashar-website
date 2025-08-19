@@ -19,14 +19,18 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = React.createRef();
   const isNavBottom = (element) => {
+    if (!element) return 0; // Return 0 if element is null
     return element.offsetTop;
   };
-  const toggle = () => setIsOpen(!isOpen);
-  const handelClose = () => setIsOpen(false);
-  const handelScroll = (e) => {
-    console.log(e);
 
+  const toggle = () => setIsOpen(!isOpen);
+
+  const handelClose = () => setIsOpen(false);
+
+  const handelScroll = () => {
     const wrappedElement = navRef.current;
+    if (!wrappedElement) return;
+
     if (window.scrollY > isNavBottom(wrappedElement)) {
       wrappedElement.classList.add("sticky");
     } else {
@@ -50,6 +54,7 @@ export default function NavBar() {
         <Link to="/" className="navbar-brand  mx-lg-0">
           BS
         </Link>
+        {/*====================== small navigation bar start=============================== */}
         <div className="navBar_small">
           <React.StrictMode>
             <Button onClick={toggle} className="btn-toggler">
@@ -104,7 +109,8 @@ export default function NavBar() {
             </Collapse>
           </React.StrictMode>
         </div>
-
+        {/*  ======================small navigation bar end================================= */}
+        {/*  ==================== normal navigation bar start=============================== */}
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-lg-5">
             <li className="nav-item">
@@ -116,13 +122,6 @@ export default function NavBar() {
                 {t("HOME")}
               </Link>
             </li>
-            <Link
-              to="/Education"
-              className={`${
-                pathname === "/Education" ? "active" : ""
-              } nav-link click-scroll`}>
-              {t("EDUCATION")}
-            </Link>
             <li className="nav-item">
               <Link
                 to="/Experience"
@@ -130,6 +129,15 @@ export default function NavBar() {
                   pathname === "/Experience" ? "active" : ""
                 } nav-link click-scroll`}>
                 {t("EXPERIENCE")}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/Education"
+                className={`${
+                  pathname === "/Education" ? "active" : ""
+                } nav-link click-scroll`}>
+                {t("EDUCATION")}
               </Link>
             </li>
             <li className="nav-item">
@@ -150,10 +158,10 @@ export default function NavBar() {
                 {t("CONTACT")}
               </Link>
             </li>
-
             <LanguageList />
           </ul>
         </div>
+        {/*  ==================== normal navigation bar end=============================== */}
       </div>
     </>
   );

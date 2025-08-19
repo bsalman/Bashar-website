@@ -1,5 +1,6 @@
 @use "./colors.scss";
 .footer-container {
+  background-color: colors.$border-color;
   .site-footer {
     ul {
       list-style: none;

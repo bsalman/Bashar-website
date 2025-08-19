@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { allMyExperiencePost } from "../service/api";
 import SubHero from "./SubHero";
 import Projects from "./Projects";
+import experienceImage from "../assets/images/Experience.jpg";
 export default function Experience() {
   const [experiences, setExperience] = useState([]);
   useEffect(() => {
@@ -71,16 +72,15 @@ export default function Experience() {
     });
   return (
     <>
-      <SubHero />
       <section className="clients section-padding experience" id="experience">
         <div className="container">
           <div className="row ">
             <div className="col-12 ms-auto">
               <div className="section-title-wrap d-flex justify-content-center align-items-center mb-4">
                 <img
-                  src="./images/Experience.jpg"
+                  src={experienceImage}
                   className="avatar-image img-fluid"
-                  alt="Projects image"
+                  alt="Experience image"
                 />
                 <h2 className="text-white ms-4 mb-0">Experience</h2>
               </div>
@@ -93,7 +93,6 @@ export default function Experience() {
           </div>
         </div>
       </section>
-      <Projects />
     </>
   );
 }

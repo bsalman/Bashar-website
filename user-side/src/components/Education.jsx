@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import SubHero from "./SubHero";
+import { useEffect, useState } from "react";
 import { allMyEducationPost } from "../service/api";
 import education from "../assets/images/education.jpg";
 export default function Education() {
@@ -39,7 +38,6 @@ export default function Education() {
   });
   return (
     <>
-      <SubHero />
       <section id="education" className="education section-padding">
         <div className="container">
           <div className="row">

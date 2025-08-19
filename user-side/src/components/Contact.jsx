@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 //prevents XSS attacks.
 import DOMPurify from "dompurify";
-import SubHero from "./SubHero";
+
 import { sendEmail } from "../service/api";
 
 export default function Contact() {
@@ -55,8 +55,7 @@ export default function Contact() {
   };
   return (
     <>
-      <SubHero />
-      <section className="contact section-padding" id="section_5">
+      <section className="contact section-padding services" id="section_5">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 col-md-8 col-12">
