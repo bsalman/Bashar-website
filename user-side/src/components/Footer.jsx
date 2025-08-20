@@ -7,7 +7,7 @@ export default function Footer({ userInfo, error, isLoading }) {
   useEffect(() => {}, []);
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <div></div>;
   }
   if (error) {
     return <div>error fetching userInfo </div>;

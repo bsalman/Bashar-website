@@ -1,7 +1,11 @@
 import React from "react";
 import banner from "../assets/images/banner-php.png";
 import bs_web from "../assets/images/bs_web.png";
+import { useTranslation } from "react-i18next";
+
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       className="hero d-flex justify-content-center align-items-center"
@@ -15,12 +19,12 @@ export default function Hero() {
                   src={bs_web}
                   className="avatar-image avatar-image-large img-fluid"
                   alt="the developer Image"></img>
-                <h1 className="hero-title ms-3 mb-0">Hello friend!</h1>
+                <h1 className="hero-title ms-3 mb-0">{t("Hello friend!")}</h1>
               </div>
-              <h2 className="mb-4">I’m available for work.</h2>
+              <h2 className="mb-4">{t("I’m available for work.")}</h2>
               <p className="mb-4">
                 <a className="custom-btn btn custom-link" href="#section_2">
-                  Let's begin
+                  {t("Let's begin")}
                 </a>
               </p>
             </div>

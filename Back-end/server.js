@@ -57,7 +57,6 @@ app.post("/api/getProjects", (req, res) => {
   dataModule
     .getProjects(1)
     .then((data) => {
-      console.log(data);
       res.json(data);
     })
     .catch((error) => {
@@ -122,29 +121,6 @@ app.post(
   }
 );
 
-///================================================================================///
-//* check database connection and create the tables in data base
-// init()
-//   .then(() => {
-//     console.log("✅ Connection established");
-//     return P_projects.sync({ force: true }); // or { alter: true }
-//   })
-//   .then(() => {
-//     console.log("✅ Table and model synced successfully");
-//   })
-//   .catch((err) => {
-//     console.error("❌ Something went wrong:", err);
-//   });
-
-// async function insertDummyData() {
-//   try {
-//     const newRecord = await UserInfo.create(dummyData);
-//     console.log("Insert successful:", newRecord.toJSON());
-//   } catch (error) {
-//     console.error("Insert failed:", error);
-//   }
-// }
-// insertDummyData();
 ///====================================================================================///
 const port = process.env.PORT || 3005;
 

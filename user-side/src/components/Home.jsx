@@ -6,6 +6,7 @@ import Experience from "./Experience";
 import Skills from "./Skills";
 import Contact from "./Contact";
 import Education from "./Education";
+import LoadingPage from "./LoadingPage";
 
 import personalImage from "../assets/images/in_web_i.png";
 import aboutImg from "../assets/images/about.jpg";
@@ -34,7 +35,7 @@ export default function Home({ userInfo, error, isLoading }) {
   }, []);
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <LoadingPage />;
   }
   if (error) {
     return <div>error fetching userInfo </div>;
@@ -44,7 +45,7 @@ export default function Home({ userInfo, error, isLoading }) {
   return (
     <>
       <Hero />
-      <section className="about section-padding" id="section_2">
+      <section className="about section-padding" id="Home">
         <div className="container">
           <div className="row">
             <div className="col-12 mt-5 mt-lg-0 ">
@@ -66,7 +67,8 @@ export default function Home({ userInfo, error, isLoading }) {
                   />
                 </div>
                 <h3 className="pt-2 mb-3">
-                  HELLO I AM <span>{name ? name.toUpperCase() : "BASHAR"}</span>
+                  {t("gratings")}{" "}
+                  <span>{name ? name.toUpperCase() : "BASHAR"}</span>
                 </h3>
                 <p>{userInfo.position}</p>
                 <p className="h4">{userInfo.description} </p>
@@ -81,26 +83,26 @@ export default function Home({ userInfo, error, isLoading }) {
             <div className="col-lg-6 col-12">
               <div className="profile-thumb">
                 <div className="profile-title">
-                  <h4 className="mb-0">Information</h4>
+                  <h4 className="mb-0">{t("Information")}</h4>
                 </div>
                 <div className="profile-body">
                   <p>
-                    <span className="profile-small-title">Name</span>
+                    <span className="profile-small-title">{t("Name")}</span>
                     <span>{name ? name.toUpperCase() : "BASHAR"}</span>&nbsp;
                     <span>{lastName ? lastName.toUpperCase() : "SALMAN"}</span>
                   </p>
                   <p>
-                    <span className="profile-small-title">Birthday</span>
+                    <span className="profile-small-title">{t("Birthday")}</span>
                     <span>04 June 1984</span>
                   </p>
                   <p>
-                    <span className="profile-small-title">Phone</span>
+                    <span className="profile-small-title">{t("Phone")}</span>
                     <span>
                       <a href={`tel:${userInfo.phone}`}>{userInfo.phone}</a>
                     </span>
                   </p>
                   <p>
-                    <span className="profile-small-title">Email</span>
+                    <span className="profile-small-title">{t("Email")}</span>
                     <span>
                       <a href={`mailto:${userInfo.email}`}>{userInfo.email}</a>
                     </span>
@@ -116,27 +118,29 @@ export default function Home({ userInfo, error, isLoading }) {
                       {experienceYears}
                     </strong>
 
-                    <p className="featured-text">Years of Experiences</p>
+                    <p className="featured-text">{t("Years_of_Experiences")}</p>
                   </div>
                   <div className="col-lg-6 col-6 featured-border-start featured-border-bottom ps-5 py-2">
                     <strong className="featured-numbers">
                       {userInfo.countProjects}
                     </strong>
-                    <p className="featured-text">Projects I participated in</p>
+                    <p className="featured-text">
+                      {t("Projects_I_participated_in")}
+                    </p>
                   </div>
                   <div className="col-lg-6 col-6 pt-4">
                     <strong className="featured-numbers">
                       {userInfo.countProjects}
                     </strong>
 
-                    <p className="featured-text"> Happy Customers</p>
+                    <p className="featured-text">{t("Happy_Customers")}</p>
                   </div>
                   <div className="col-lg-6 col-6 featured-border-start ps-5 pt-4">
                     <strong className="featured-numbers">
                       {userInfo.countProgrammingSkills}
                     </strong>
 
-                    <p className="featured-text">Programming Skills</p>
+                    <p className="featured-text">{t("Programming_Skills")}</p>
                   </div>
                 </div>
               </div>
@@ -146,8 +150,8 @@ export default function Home({ userInfo, error, isLoading }) {
       </section>
       <Projects />
       <Experience />
-      <Skills />
       <Education />
+      <Skills />
       <Contact />
     </>
   );

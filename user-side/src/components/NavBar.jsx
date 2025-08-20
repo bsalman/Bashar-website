@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageList from "./LanguageList";
+
 import {
   Collapse,
   Button,
@@ -17,14 +18,16 @@ export default function NavBar() {
   const { pathname } = location;
 
   const [isOpen, setIsOpen] = useState(false);
-  const navRef = React.createRef();
+  // cerate a ref
+  const navRef = useRef(null);
+
   const isNavBottom = (element) => {
     if (!element) return 0; // Return 0 if element is null
     return element.offsetTop;
   };
-
+  // toggle the Small navbar list
   const toggle = () => setIsOpen(!isOpen);
-
+  // close the  Small navbar list
   const handelClose = () => setIsOpen(false);
 
   const handelScroll = () => {
@@ -51,9 +54,9 @@ export default function NavBar() {
   return (
     <>
       <div className="container " id="todo" ref={navRef}>
-        <Link to="/" className="navbar-brand  mx-lg-0">
+        <a href="/" className="navbar-brand  mx-lg-0">
           BS
-        </Link>
+        </a>
         {/*====================== small navigation bar start=============================== */}
         <div className="navBar_small">
           <React.StrictMode>
@@ -68,37 +71,39 @@ export default function NavBar() {
                 <CardBody>
                   <ListGroup>
                     <ListGroupItem className=" g-item" onClick={handelClose}>
-                      <Link to="/" className={pathname === "/" ? "active" : ""}>
+                      <a
+                        href="#Home"
+                        className={pathname === "/" ? "active" : ""}>
                         {t("HOME")}
-                      </Link>
+                      </a>
                     </ListGroupItem>
                     <ListGroupItem className=" g-item" onClick={handelClose}>
-                      <Link
-                        to="/Education"
-                        className={pathname === "/Education" ? "active" : ""}>
-                        {t("EDUCATION")}
-                      </Link>
-                    </ListGroupItem>
-                    <ListGroupItem className=" g-item" onClick={handelClose}>
-                      <Link
-                        to="/Experience"
+                      <a
+                        href="#Experience"
                         className={pathname === "/Experience" ? "active" : ""}>
                         {t("EXPERIENCE")}
-                      </Link>
+                      </a>
                     </ListGroupItem>
                     <ListGroupItem className=" g-item" onClick={handelClose}>
-                      <Link
-                        to="/Skills"
+                      <a
+                        href="#Education"
+                        className={pathname === "/Education" ? "active" : ""}>
+                        {t("EDUCATION")}
+                      </a>
+                    </ListGroupItem>
+                    <ListGroupItem className=" g-item" onClick={handelClose}>
+                      <a
+                        href="#Skills"
                         className={pathname === "/Skills" ? "active" : ""}>
                         {t("SKILLS")}
-                      </Link>
+                      </a>
                     </ListGroupItem>
                     <ListGroupItem className=" g-item" onClick={handelClose}>
-                      <Link
-                        to="/Contact"
+                      <a
+                        href="#Contact"
                         className={pathname === "/Contact" ? "active" : ""}>
                         {t("CONTACT")}
-                      </Link>
+                      </a>
                     </ListGroupItem>
                     <ListGroupItem className=" g-item">
                       <LanguageList />
@@ -114,49 +119,58 @@ export default function NavBar() {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-lg-5">
             <li className="nav-item">
-              <Link
-                to="/"
+              <a
+                href="#Home"
                 className={`${
                   pathname === "/" ? "active" : ""
                 } nav-link click-scroll`}>
                 {t("HOME")}
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
-                to="/Experience"
+              <a
+                href="#Projects"
+                className={`${
+                  pathname === "/Projects" ? "active" : ""
+                } nav-link click-scroll`}>
+                {t("PROJECTS")}
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href="#Experience"
                 className={`${
                   pathname === "/Experience" ? "active" : ""
                 } nav-link click-scroll`}>
                 {t("EXPERIENCE")}
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
-                to="/Education"
+              <a
+                href="#Education"
                 className={`${
                   pathname === "/Education" ? "active" : ""
                 } nav-link click-scroll`}>
                 {t("EDUCATION")}
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
-                to="/Skills"
+              <a
+                href="#Skills"
                 className={`${
                   pathname === "/Skills" ? "active" : ""
                 } nav-link click-scroll`}>
                 {t("SKILLS")}
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
-                to="/Contact"
+              <a
+                href="#Contact"
                 className={`${
                   pathname === "/Contact" ? "active" : ""
                 } nav-link click-scroll`}>
                 {t("CONTACT")}
-              </Link>
+              </a>
             </li>
             <LanguageList />
           </ul>

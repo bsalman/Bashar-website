@@ -1,0 +1,15 @@
+.Page404 {
+  position: relative;
+  z-index: 9999;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    128deg,
+    rgba(0, 44, 170, 1) 0%,
+    rgba(249, 249, 249, 0.01) 35%,
+    rgba(255, 127, 80, 0.71) 100%
+  );
+}
