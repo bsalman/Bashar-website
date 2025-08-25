@@ -29,5 +29,9 @@
   "OR": "Or",
   "OR_TEXT": "Alternatively, you can fill out the form below, and I will get back to you as soon as possible.",
   "Title": "Title",
-  "Tell_me_about_the_project": "Tell me about the project"
+  "Tell_me_about_the_project": "Tell me about the project",
+  "SuccessSendingMessage": "Your message has been sent successfully. I will get back to you as soon as possible",
+  "errorSendingMessage": "Something went wrong, please try again later.",
+  "Sending": "Sending...",
+  "Send": "Send"
 }

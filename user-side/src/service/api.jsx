@@ -125,15 +125,18 @@ export const sendEmail = async (name, email, title, text) => {
     title,
     text
   };
-  const response = await fetch("/contact", {
+  const response = await fetch("/api/contact", {
     method: "Post",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(sendData)
   });
+  console.log(response);
+
   if (response.ok) {
-    const _data = await response.json();
+    const data = await response.json();
+    console.log(data);
 
     return 200;
   } else {

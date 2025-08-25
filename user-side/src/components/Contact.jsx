@@ -1,14 +1,20 @@
 import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 //prevents XSS attacks.
 import DOMPurify from "dompurify";
 
 import { sendEmail } from "../service/api";
+
 import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  // translation
   const { t } = useTranslation();
+
+  // useState
   const [successMessage, setSuccessMessage] = useState("");
+
   //react-hook-form
   const {
     register,
@@ -25,7 +31,8 @@ export default function Contact() {
     }
   });
   //this function will be as an argument in the handleSubmit function witch wie imported from react-hook-form library
-  const onSubmitHandler = async (data) => {
+  const onSubmitHandler = (data) => {
+    //Prevent XSS (Cross-Site Scripting) attacks by sanitizing user input.
     const sanitizedData = {
       name: DOMPurify.sanitize(data.name),
       email: DOMPurify.sanitize(data.email),
@@ -33,25 +40,23 @@ export default function Contact() {
       message: DOMPurify.sanitize(data.message)
     };
 
-    try {
-      const response = await sendEmail(
-        sanitizedData.name,
-        sanitizedData.email,
-        sanitizedData.title,
-        sanitizedData.message
-      );
-
-      reset();
-      if (response === 200) {
-        setSuccessMessage(
-          "Your message has been sent successfully. I will get back to you as soon as possible."
-        );
-      }
-    } catch (error) {
-      setError("root", {
-        message: `Something went wrong, please try again later. ${error.message}`
+    sendEmail(
+      sanitizedData.name,
+      sanitizedData.email,
+      sanitizedData.title,
+      sanitizedData.message
+    )
+      .then((receivedData) => {
+        reset({ name: "", email: "", title: "", message: "" });
+        if (receivedData === 200) {
+          setSuccessMessage(t("SuccessSendingMessage"));
+        }
+      })
+      .catch((error) => {
+        setError("root", {
+          message: `${t("errorSendingMessage")}. ${error.message}`
+        });
       });
-    }
   };
 
   return (
@@ -191,7 +196,7 @@ export default function Contact() {
                       disabled={isSubmitting}
                       type="submit"
                       className="form-control">
-                      {isSubmitting ? "Sending..." : "Send"}
+                      {isSubmitting ? t("Sending") : t("Send")}
                     </button>
                   </div>
                 </div>

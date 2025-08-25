@@ -29,5 +29,9 @@
   "OR": "Oder",
   "OR_TEXT": "Alternativ können Sie das untenstehende Formular ausfüllen, und ich werde mich so schnell wie möglich bei Ihnen melden.",
   "Title": "Titel",
-  "Tell_me_about_the_project": "Erzählen Sie mir von dem Projekt"
+  "Tell_me_about_the_project": "Erzählen Sie mir von dem Projekt",
+  "SuccessSendingMessage": "Ihre Nachricht wurde erfolgreich gesendet. Ich werde mich so schnell wie möglich bei Ihnen melden.",
+  "errorSendingMessage": "Etwas ist schiefgelaufen, bitte versuchen Sie es später noch einmal.",
+  "Sending": "Senden...",
+  "Send": "Schicken"
 }
