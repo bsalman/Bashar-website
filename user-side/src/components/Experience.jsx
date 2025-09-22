@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { allMyExperiencePost } from "../service/api";
 import SubHero from "./SubHero";
 import Projects from "./Projects";
+import experienceImage from "../assets/images/Experience.jpg";
+import { useTranslation } from "react-i18next";
+
 export default function Experience() {
+  const { t } = useTranslation();
   const [experiences, setExperience] = useState([]);
   useEffect(() => {
     allMyExperiencePost().then((data) => {
@@ -71,18 +75,17 @@ export default function Experience() {
     });
   return (
     <>
-      <SubHero />
-      <section className="clients section-padding experience" id="experience">
+      <section className="clients section-padding experience" id="Experience">
         <div className="container">
           <div className="row ">
             <div className="col-12 ms-auto">
               <div className="section-title-wrap d-flex justify-content-center align-items-center mb-4">
                 <img
-                  src="./images/Experience.jpg"
+                  src={experienceImage}
                   className="avatar-image img-fluid"
-                  alt="Projects image"
+                  alt="Experience image"
                 />
-                <h2 className="text-white ms-4 mb-0">Experience</h2>
+                <h2 className="text-white ms-4 mb-0">{t("EXPERIENCE")}</h2>
               </div>
             </div>
           </div>
@@ -93,7 +96,6 @@ export default function Experience() {
           </div>
         </div>
       </section>
-      <Projects />
     </>
   );
 }

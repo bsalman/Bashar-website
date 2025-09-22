@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Collapse, ListGroup, ListGroupItem, CardBody, Card } from "reactstrap";
 
@@ -7,46 +7,50 @@ export default function LanguageList() {
     { code: "en", name: "En" },
     { code: "de", name: "De" }
   ];
-  const [currentLanguage, setCurrentLanguage] = useState("En"); // Default language
+
+  const { i18n } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(""); // Start leer
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { i18n } = useTranslation();
+
+  // ✅ Wenn Seite geladen wird, Sprache aus i18n übernehmen
+  useEffect(() => {
+    const lang = i18n.language || "en"; // Fallback zu en
+    const langObj = languages.find((l) => l.code === lang);
+    setCurrentLanguage(langObj ? langObj.name : "En");
+  }, [i18n.language]);
+
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng); // Change the language
+    i18n.changeLanguage(lng); // Sprache ändern
+    const langObj = languages.find((l) => l.code === lng);
+    setCurrentLanguage(langObj ? langObj.name : "En");
+    setIsOpen(false);
   };
-  const ButtonElement = languages.map((language) => {
-    return (
-      <ListGroup className="list-group-lang" key={language.code}>
-        <ListGroupItem className="g-item ">
-          <span
-            className="language-btn"
-            onClick={() => {
-              changeLanguage(language.code);
-              setCurrentLanguage(language.name);
-              setIsOpen(false);
-            }}>
-            {language.name}
-          </span>
-        </ListGroupItem>
-      </ListGroup>
-    );
-  });
+
   return (
-    <>
-      <div className="language-switcher">
-        <span className="language-text">{currentLanguage}</span>
-        &nbsp;
-        <React.StrictMode>
-          <span
-            onClick={toggle}
-            className="globe-icon icon icon-globe no-text"></span>
-          <Collapse isOpen={isOpen} className="collapse-element lang-list">
-            <Card className="list-container">
-              <CardBody>{ButtonElement}</CardBody>
-            </Card>
-          </Collapse>
-        </React.StrictMode>
-      </div>
-    </>
+    <div className="language-switcher">
+      <span className="language-text">{currentLanguage}</span>
+      &nbsp;
+      <span
+        onClick={toggle}
+        className="globe-icon icon icon-globe no-text"></span>
+      <Collapse isOpen={isOpen} className="collapse-element lang-list">
+        <Card className="list-container">
+          <CardBody>
+            {languages.map((language) => (
+              <ListGroup className="list-group-lang" key={language.code}>
+                <ListGroupItem className="g-item">
+                  <span
+                    className="language-btn"
+                    onClick={() => changeLanguage(language.code)}>
+                    {language.name}
+                  </span>
+                </ListGroupItem>
+              </ListGroup>
+            ))}
+          </CardBody>
+        </Card>
+      </Collapse>
+    </div>
   );
 }

@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { allMyProjectsPost } from "../service/api";
 import { Link } from "react-router-dom";
 import ProjectsImage from "../assets/images/Projects.jpg";
+import { useTranslation } from "react-i18next";
+
 export default function Projects() {
+  const { t } = useTranslation();
+
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     allMyProjectsPost().then((data) => {
@@ -27,7 +31,7 @@ export default function Projects() {
           <Link to={project.project_url} target="_blank">
             <img
               //to do images src
-              src={`../../assets/images/${project.web_img_url}`}
+              src={`../../../public/images/${project.web_img_url}`}
               className="projects-image img-fluid"
               alt=""
             />
@@ -38,7 +42,7 @@ export default function Projects() {
   });
   return (
     <>
-      <section className="projects section-padding" id="section_4">
+      <section className="projects section-padding" id="Projects">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 col-md-8 col-12 ms-auto">
@@ -49,11 +53,11 @@ export default function Projects() {
                   alt="Projects image"
                 />
 
-                <h2 className="text-white ms-4 mb-0">Projects</h2>
+                <h2 className="text-white ms-4 mb-0">{t("Projects")}</h2>
               </div>
             </div>
             <div className="clearfix d-flex justify-content-center align-items-center">
-              <h3>Projects I participated in</h3>
+              <h3>{t("Projects_I_participated_in")}</h3>
             </div>
             {renderingProjects}
           </div>

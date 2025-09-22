@@ -117,3 +117,31 @@ export const footerInfoPost = async () => {
     throw error;
   }
 };
+
+export const sendEmail = async (name, email, title, text) => {
+  const sendData = {
+    name,
+    email,
+    title,
+    text
+  };
+  const response = await fetch("/api/contact", {
+    method: "Post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(sendData)
+  });
+  console.log(response);
+
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+
+    return 200;
+  } else {
+    throw new Error(
+      `Cannot get the data, response number is: ${response.status}`
+    );
+  }
+};

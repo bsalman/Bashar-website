@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
-import SubHero from "./SubHero";
+import { useEffect, useState } from "react";
 import { allMyEducationPost } from "../service/api";
 import education from "../assets/images/education.jpg";
+import { useTranslation } from "react-i18next";
+
 export default function Education() {
+  const { t } = useTranslation();
   const [myEducation, setMyEducation] = useState([]);
   useEffect(() => {
     allMyEducationPost().then((data) => {
@@ -39,8 +41,7 @@ export default function Education() {
   });
   return (
     <>
-      <SubHero />
-      <section id="education" className="education section-padding">
+      <section id="Education" className="education section-padding">
         <div className="container">
           <div className="row">
             <div className="section-title-wrap d-flex justify-content-center align-items-center mb-5">
@@ -49,7 +50,7 @@ export default function Education() {
                 className="avatar-image img-fluid"
                 alt="education image"
               />
-              <h2 className="text-white ms-4 mb-0">Education</h2>
+              <h2 className="text-white ms-4 mb-0">{t("EDUCATION")}</h2>
             </div>
           </div>
         </div>

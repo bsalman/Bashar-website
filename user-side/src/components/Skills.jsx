@@ -1,8 +1,7 @@
 import React from "react";
-import { Progress } from "reactstrap";
-import SubHero from "./SubHero";
 import { allMySkillsPost } from "../service/api";
 import SkillsImage from "../assets/images/Skills.jpg";
+import { withTranslation } from "react-i18next";
 
 class Skills extends React.Component {
   constructor(props) {
@@ -20,6 +19,8 @@ class Skills extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     const renderingInSkills = this.state.skills.map((skill, index) => (
       <div key={index} className="col-lg-3 col-12">
         <div
@@ -44,8 +45,7 @@ class Skills extends React.Component {
 
     return (
       <>
-        <SubHero />
-        <section className="services section-padding">
+        <section className="services section-padding" id="Skills">
           <div className="container">
             <div className="row">
               <div className="section-title-wrap d-flex justify-content-center align-items-center mb-5">
@@ -54,7 +54,7 @@ class Skills extends React.Component {
                   className="avatar-image img-fluid"
                   alt=""
                 />
-                <h2 className="text-white ms-4 mb-0">Skills</h2>
+                <h2 className="text-white ms-4 mb-0">{t("SKILLS")}</h2>
               </div>
               <div className="row pt-lg-5">{renderingInSkills}</div>
             </div>
@@ -64,4 +64,4 @@ class Skills extends React.Component {
     );
   }
 }
-export default Skills;
+export default withTranslation()(Skills);
