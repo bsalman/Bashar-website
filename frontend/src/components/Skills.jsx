@@ -22,7 +22,7 @@ class Skills extends React.Component {
     const { t } = this.props;
 
     const renderingInSkills = this.state.skills.map((skill, index) => (
-      <div key={index} className="col-lg-3 col-12">
+      <div key={index} className="col-lg-3 col-md-6 col-12">
         <div
           className={`services-thumb ${
             index % 2 === 0 ? "" : "services-thumb-up"
@@ -64,4 +64,5 @@ class Skills extends React.Component {
     );
   }
 }
-export default withTranslation()(Skills);
+const TranslatedSkills = withTranslation()(Skills);
+export default TranslatedSkills;
