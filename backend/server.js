@@ -124,14 +124,10 @@ app.post(
 ///====================================================================================///
 const port = process.env.PORT || 3005;
 
-app.use(
-  "/",
-
-  (req, res) => {
-    const html = fs.readFileSync(__dirname + "/index.html", "utf-8");
-    res.send(html);
-  }
-);
+app.use("/", (req, res) => {
+  const html = fs.readFileSync(__dirname + "/index.html", "utf-8");
+  res.send(html);
+});
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
