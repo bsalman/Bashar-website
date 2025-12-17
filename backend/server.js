@@ -104,20 +104,23 @@ app.post(
     body("title").notEmpty().withMessage("Title is required"),
     body("text").notEmpty().withMessage("Text is required")
   ],
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     const { name, email, title, text } = req.body;
-
-    emailSender.sendEmail(name, email, title, text, (ok) => {
+    try {
+      const ok = await emailSender.sendEmail(name, email, title, text);
       if (ok) {
-        res.status(200).json({ message: "the Email sended successfully" });
+        return res.status(200).json({ message: "Email sent successfully" });
       } else {
-        res.status(500).json({ message: "Error sending email" });
+        return res.status(500).json({ message: "Error sending email" });
       }
-    });
+    } catch (err) {
+      console.error("Contact error:", err);
+      return res.status(500).json({ message: "Internal server error" });
+    }
   }
 );
 

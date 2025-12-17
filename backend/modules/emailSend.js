@@ -36,13 +36,14 @@ const sendEmail = (name, email, title, text, callback) => {
             </body>
           </html>`
   };
-
-  transporter.sendMail(mailOption, (error, info) => {
-    if (error) {
-      callback(false);
-    } else {
-      callback(true);
-    }
+  return new Promise((resolve) => {
+    transporter.sendMail(mailOption, (error, info) => {
+      if (error) {
+        return resolve(false);
+      } else {
+        return resolve(true);
+      }
+    });
   });
 };
 module.exports = { sendEmail };

@@ -13,6 +13,8 @@ class Skills extends React.Component {
   componentDidMount() {
     allMySkillsPost().then((data) => {
       if (data != 2) {
+        console.log(data);
+
         this.setState({ ...this.state, skills: data });
       }
     });
@@ -30,7 +32,7 @@ class Skills extends React.Component {
           <div className="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
             <h5 className="mb-0">{skill.skill}</h5>
             <div className="services-price-wrap ms-auto">
-              <p className="services-price-text mb-0">{`${skill.skillLevel} %`}</p>
+              <p className="services-price-text mb-0">{`${skill.skill_level} %`}</p>
               <div className="services-price-overlay"></div>
             </div>
           </div>

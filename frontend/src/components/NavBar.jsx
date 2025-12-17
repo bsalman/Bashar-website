@@ -108,7 +108,7 @@ export default function NavBar() {
                     <a
                       href={`#${section}`}
                       className={activeSection === section ? "active" : ""}>
-                      {t(section.toUpperCase())}
+                      {t(section)}
                     </a>
                   </ListGroupItem>
                 ))}

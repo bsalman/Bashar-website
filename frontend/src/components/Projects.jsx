@@ -31,7 +31,7 @@ export default function Projects() {
           <Link to={project.project_url} target="_blank">
             <img
               //to do images src
-              src={`../../../public/images/${project.web_img_url}`}
+              src={`../images/${project.web_img_url}`}
               className="projects-image img-fluid"
               alt=""
             />
