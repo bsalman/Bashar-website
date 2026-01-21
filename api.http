@@ -1,6 +1,27 @@
-POST http://localhost:3005/userInfo HTTP/1.1
+
+### Contact API
+POST http://localhost:3005/contact HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": 1
+    "name": "BS",
+    "email": "test@text.com",
+    "title":" title test ",
+    "text":"text test"
 }
+
+### live Contact API
+POST https://bashar-dev.me/api/contact
+Content-Type: application/json
+
+{
+  "name": "Bashar",
+  "email": "test@example.com",
+  "title": "Hello",
+  "text": "This is a test message"
+}
+
+
+
+
+
